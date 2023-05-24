@@ -227,12 +227,13 @@
     <section id="portfolio" class="portfolio section-bg">
       <div class="container">
         <div class="section-title">
-          <h2>Identity Details</h2>
+          <h2>Contact Details</h2>
         </div>
 
         {% load static %} 
-        <i class="bi bi-chevron-right"></i> <strong>Id:</strong> <span>{{j.sid}}</span></li><br><br>
-        <i class="bi bi-chevron-right"></i> <strong>Id Number:</strong> <span>{{j.eidn}}</span></li>
+        <i class="bi bi-chevron-right"></i> <strong>Mobile Number: </strong> <span>{{i.mobno}}</span></li><br><br>
+        <i class="bi bi-chevron-right"></i> <strong>Email: </strong> <span>{{i.email}}</span></li><br><br>
+        <i class="bi bi-chevron-right"></i> <strong>Address: </strong> <span>{{i.address}}</span></li><br><br>
 
 
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
@@ -243,11 +244,11 @@
               <img src="{{j.dsbg.url}}" class="img-fluid" alt="hey">
             </div> {% endcomment %}
 
-            <div class="row">
-              <div class="col-lg-4" data-aos="fade-right"><br>
+            {% comment %} <div class="row">
+              <div class="col-lg-4" data-aos="fade-right">
                 <img src="{{j.dsbg.url}}" class="img-fluid" alt="hey" onclick="openImage('{{j.dsbg.url}}')">
               </div>
-            </div>
+            </div> {% endcomment %}
             
             <script>
               function openImage(url) {

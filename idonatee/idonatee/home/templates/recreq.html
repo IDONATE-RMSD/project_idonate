@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+{% load static %} 
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="stylesheet" href="css/details.css">
+    <link rel="stylesheet" href="{% static '/css/details.css' %}">
+
+     
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+</head>
+{% load static %} 
+
+<body>
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+    <label  id="mm"><center><strong><b>Message:</strong>{{ message }}</b></center></label>
+    
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    {% endfor %}
+
+    <div class="container">
+        <header>Receiver Request</header>
+
+        <form action="/recreq"  method="POST" enctype="multipart/form-data">
+            {%  csrf_token %}
+            <div class="form first">
+                <div class="details personal">
+                
+
+                    <div class="fields">
+                  
+
+
+                        <div class="input-field">
+                            <label>Select_category_of_Receiving</label>
+                            <select id="scor" name="scor" >
+                                <option  disabled selected>Select Category of Receiving</option>
+                                <option>Blood</option>
+                                <option>Kidney</option>
+                                <option>Liver</option>
+                                <option>Lungs</option>
+                                <option>Eye</option>
+                            </select>
+
+
+                        </div>
+
+                    
+                        <button class="sumbit">
+                            <span class="btnText">REQUEST</span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
+                </div> 
+            </div>
+        </div>
+    </div> 
+</div>
+</form>
+</div>
+</body>
+</html>

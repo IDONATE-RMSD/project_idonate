@@ -1164,8 +1164,8 @@
                   <th>#</th>
                   <th>Username</th>
                   <th>Full Name</th>
-                  <th>Email</th>
-                  <th>Contact</th>
+                  {% comment %} <th>Email</th>
+                  <th>Contact</th> {% endcomment %}
                   <th>Bloodgroup</th>
                   <th>Profile</th>
                   <th>Request</th>
@@ -1178,11 +1178,11 @@
               <td>{{forloop.counter}}</td>
               <td>{{user.username}}</td>
                 <td>{{user.fname}}</td>
-                <td>{{user.remail}}</td>
-                <td>{{user.rmobno}}</td>
+                {% comment %} <td>{{user.remail}}</td>
+                <td>{{user.rmobno}}</td> {% endcomment %}
                 <td>{{user.rbg}}</td>
                 <td><a href="/recsearch/{{user.username}}">View profile</a></td>
-                <td> <a href="#"><button type="submit" class="btn btn-danger">Request</button></a>
+                <td> <a href="/recreq"><button type="submit" class="btn btn-danger">Request</button></a>
                
                 {% comment %} <td> <a href="/recacceptreject/{{user.username}}"><button type="submit" class="btn btn-danger">assign_status</button></a>
                </tr> {% endcomment %}

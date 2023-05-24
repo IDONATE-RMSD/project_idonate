@@ -109,19 +109,17 @@ class Rdetail2(models.Model):
 
 
 class Quick(models.Model):
-    username=models.CharField(max_length=20)
+    
     qfname=models.CharField(max_length=20)
-    qdob=models.DateField()
     qemail=models.EmailField()
     qmobno=models.IntegerField()
-    qge=models.CharField(max_length=10)
-    qage=models.IntegerField()
-    qbg=models.CharField(max_length=10)
-    qweight=models.IntegerField()
-    qheight=models.IntegerField()
-    qan=models.CharField(max_length=10)
-    qtmr=models.CharField(max_length=10)
-    qidtype=models.CharField(max_length=10)
-    qimage=models.ImageField(upload_to='pictures')
+    qaddress=models.CharField(max_length=10)
+    
 
+class Recreq(models.Model):
+    username=models.CharField(max_length=20)
+    scor=models.CharField(max_length=20)
 
+class Donreq(models.Model):
+    username=models.CharField(max_length=20)
+    scod=models.CharField(max_length=20)

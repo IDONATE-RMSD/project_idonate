@@ -1158,7 +1158,7 @@
 
       <nav id="navbar" class="nav-menu navbar">
         <ul>
-          <li><a href="/admrec" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>HOME</span></a></li>
+          <li><a href="/admindash" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>HOME</span></a></li>
 
         
     </div> 
@@ -1174,9 +1174,9 @@
                   <th>#</th>
                   <th>Username</th>
                   <th>Full Name</th>
-                  <th>Email</th>
-                  <th>Contact</th>
                   <th>Bloodgroup</th>
+                  <th>Contact</th>
+                  
                   <th>Profile</th>
                   <th>Identity</th>
                   {% comment %} <th>Status</th> {% endcomment %}
@@ -1190,9 +1190,10 @@
                 <td>{{forloop.counter}}</td>
                 <td>{{user.username}}</td>
                   <td>{{user.fname}}</td>
-                  <td>{{user.remail}}</td>
-                  <td>{{user.rmobno}}</td>
                   <td>{{user.rbg}}</td>
+                  
+                  
+                  <td><a href="/reccontact/{{user.username}}">View Contact</a></td>
                   <td><a href="/recsearch/{{user.username}}">View profile</a></td>
                   <td><a href="/recidentity/{{user.username}}">View Identity</a></td>
                    {% comment %} <td><span class="label label-danger">{{user.status}}</span></td> {% endcomment %}

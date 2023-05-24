@@ -1,7 +1,7 @@
 from email import message
 from django.shortcuts import render,redirect
 from django.contrib import messages
-from .models import Signupp,Detail,Rdetail,Odetail,Odetail2,Hdetail,Hdetail2,Detail2,Quick,Rdetail2,Edit
+from .models import Signupp,Detail,Rdetail,Odetail,Odetail2,Hdetail,Hdetail2,Detail2,Quick,Rdetail2,Edit,Recreq,Donreq
 
 # Create your views here.
 #global val
@@ -444,25 +444,14 @@ def rdetail2(request):
 def quick(request):
     if request.method=="POST":
         qfname=request.POST['qfname']
-        qdob=request.POST['qdob']
         qemail=request.POST['qemail']
         qmobno=request.POST['qmobno']
-        qge=request.POST['qge']
-        qage=request.POST['qage']
-        qbg=request.POST['qbg']
-        qweight=request.POST['qweight']
-        qheight=request.POST['qheight']
-        qan=request.POST['qan']
-        qtmr=request.POST['qtmr']
-        qidtype=request.POST['qidtype']
-        if len(request.FILES) !=0:
-            qimage=request.FILES['qimage']
-        
+        qaddress=request.POST['qaddress']
        
 
 
         #messages.success(request,"Your account has created successfully")
-        detq=Quick(qfname=qfname,qdob=qdob,qemail=qemail,qmobno=qmobno,qge=qge,qage=qage,qbg=qbg,qweight=qweight,qheight=qheight,qan=qan,qtmr=qtmr,qidtype=qidtype,qimage=qimage)
+        detq=Quick(qfname=qfname,qemail=qemail,qmobno=qmobno,qaddress=qaddress)
         detq.save()
         messages.success(request,"Details added successfully")
         return render(request,"qdashboard.html")
@@ -504,6 +493,25 @@ def donidentity(request, username):
     d2_p=Detail2.objects.filter(username=username).first()
     return render(request, 'didentity.html', {'i': d_p,'j':d2_p})
 
+def doncontact(request, username):
+    d_p = Detail.objects.filter(username=username).first()
+    d2_p=Detail2.objects.filter(username=username).first()
+    return render(request, 'dcontact.html', {'i': d_p,'j':d2_p})
+
+
+def dcontact(request):
+    username=val()
+    user_profile=Detail.objects.all()
+    for i in user_profile:
+        if username==i.username:
+            break
+
+    user_details=Detail2.objects.all()
+    for j in user_details:
+        if username==j.username:
+            break
+    return render(request,'dcontact.html',{'i':i,'j':j})
+
 
 def rprofile(request):
 
@@ -533,10 +541,32 @@ def ridentity(request):
             break
     return render(request,'ridentity.html',{'i':i,'j':j})
 
+
+def rcontact(request):
+
+    username=val()
+    user_profile=Rdetail.objects.all()
+    for i in user_profile:
+        if username==i.username:
+            break
+
+    user_details=Rdetail2.objects.all()
+    for j in user_details:
+        if username==j.username:
+            break
+    return render(request,'rcontact.html',{'i':i,'j':j})
+
+
 def recidentity(request, username):
     r_p = Rdetail.objects.filter(username=username).first()
     r2_p = Rdetail2.objects.filter(username=username).first()
     return render(request, 'ridentity.html', {'i': r_p,'j':r2_p})
+
+
+def reccontact(request, username):
+    r_p = Rdetail.objects.filter(username=username).first()
+    r2_p = Rdetail2.objects.filter(username=username).first()
+    return render(request, 'rcontact.html', {'i': r_p,'j':r2_p})
 
 
 
@@ -552,28 +582,18 @@ def donacceptreject(request, username):
     def don_delete_user_data(username):
         try:
             user_detail = Detail.objects.filter(username=username).first()
-
             if user_detail:
                 user_detail.delete()
-
             user_signup = Signupp.objects.filter(username=username).first()
-
             if user_signup:
                 user_signup.delete()
-
             user_detail2 = Detail2.objects.filter(username=username).first()
-
             if user_detail2:
                 user_detail2.delete()
-
-            
             return True
-
         except Exception as e:
-            # Handle any exceptions that may occur
             print(e)
             return False
-
     d_p = Detail.objects.filter(username=username).first()
     if request.method == "POST":
         status = request.POST.get("password")
@@ -587,7 +607,7 @@ def donacceptreject(request, username):
                 signup.delete()
             else:
                 messages.error(request, "Signup not found.")
-            return redirect("/admdonar")
+            return redirect("/admdonreq")
         elif status == "accept":
             # Handle the accept case here
             pass  # replace this with your code
@@ -633,7 +653,7 @@ def recacceptreject(request, username):
                 signup.delete()
             else:
                 messages.error(request, "Signup not found.")
-            return redirect("/admrec")
+            return redirect("/admrecreq")
         elif status == "accept":
             # Handle the accept case here
             pass  # replace this with your code
@@ -679,7 +699,7 @@ def orgacceptreject(request, username):
                 signup.delete()
             else:
                 messages.error(request, "Signup not found.")
-            return redirect("/admdonar")
+            return redirect("/admorgreq")
         elif status == "accept":
             # Handle the accept case here
             pass  # replace this with your code
@@ -725,7 +745,7 @@ def hosacceptreject(request, username):
                 signup.delete()
             else:
                 messages.error(request, "Signup not found.")
-            return redirect("/admhos")
+            return redirect("/admhosreq")
         elif status == "accept":
             # Handle the accept case here
             pass  # replace this with your code
@@ -801,6 +821,28 @@ def osearch(request):
 def hsearch(request):
     return render(request,'hsearch.html')
 
+def recreq(request):
+    if request.method == "POST":
+        scor = request.POST['scor']
+        username=val()
+        recreq = Recreq(username=username, scor=scor)
+        recreq.save()
+        # messages.success(request, "Details added successfully")
+        return render(request, "dsearch.html")
+    
+    return render(request, "recreq.html")
+
+
+def donreq(request):
+    if request.method == "POST":
+        scod = request.POST['scod']
+        username=val()
+        donreq = Donreq(username=username, scod=scod)
+        donreq.save()
+        messages.success(request, "Details added successfully")
+        return render(request, "rsearch.html")
+    
+    return render(request, "donreq.html")
 
 
 def admorgreq(request):

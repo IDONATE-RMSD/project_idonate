@@ -25,7 +25,7 @@
     {% endfor %}
 
     <div class="container">
-        <header>iDonate-Blood Registration</header>
+        <header>iDonate-Quick Blood Registration</header>
 
         <form action="/quick"  method="POST" class="form" enctype="multipart/form-data">
             {%  csrf_token %}
@@ -39,10 +39,10 @@
                             <input type="text" id="qfname" name="qfname" placeholder="Enter your name" required>
                         </div>
 
-                        <div class="input-field">
+                        {% comment %} <div class="input-field">
                             <label>Date of Birth</label>
                             <input type="date" id="qdob" name="qdob" placeholder="Enter birth date" required>
-                        </div>
+                        </div> {% endcomment %}
 
                         <div class="input-field">
                             <label>Email</label>
@@ -54,7 +54,7 @@
                             <input type="number" id="qmobno" name="qmobno" placeholder="Enter mobile number" required>
                         </div>
 
-                        <div class="input-field">
+                        {% comment %} <div class="input-field">
                             <label>Gender</label>
                             <select id="qge" name="qge" required>
                                 <option  disabled selected>Gender</option>
@@ -86,11 +86,11 @@
                             </select>
 
 
-                        </div>
+                        </div> {% endcomment %}
 
                         <div class="input-field">
                             <label>Address</label>
-                            <input type="text" id="address" name="address" placeholder="Enter your Address" required>
+                            <input type="text" id="qaddress" name="qaddress" placeholder="Enter your Address" required>
                         </div>
                         
                         {% comment %} <div class="input-field">
@@ -99,7 +99,7 @@
                         </div> {% endcomment %}
                         
             
-                        <div class="input-field">
+                        {% comment %} <div class="input-field">
                             <label>Enter Your Weight</label>
                             <input type="number" id="qweight" name="qweight" placeholder="Enter your Weight" required>
                         </div>
@@ -128,7 +128,7 @@
                             </select>
 
 
-                        </div>
+                        </div> {% endcomment %}
 
                         {% comment %} <div class="input-field">
                             <label>Lastly Donated Date</label>
@@ -184,7 +184,7 @@
                         </div> {% endcomment %}
 
 
-                        <div class="fields">
+                        {% comment %} <div class="fields">
                             <div class="input-field">
                                 <label>ID Type</label>
                                 <select id="qidtype" name="qidtype" required>
@@ -193,7 +193,7 @@
                                     <option>Driving Licence</option>
                                     <option>Voter's ID</option>
                                 </select>
-                            </div>
+                            </div> {% endcomment %}
     
                             {% comment %} <div class="input-field">
                                 <label>ID Number</label>
@@ -201,10 +201,10 @@
                             </div>
                      {% endcomment %}
 
-                        <div class="card-box">
+                        {% comment %} <div class="card-box">
                             <label>Image of ID </label>
                             <input type="file" id="qimage" name="qimage" placeholder="Upload Image of identity card" required>
-                        </div>
+                        </div> {% endcomment %}
 
                         <button class="sumbit">
                             <span class="btnText">SUBMIT</span>

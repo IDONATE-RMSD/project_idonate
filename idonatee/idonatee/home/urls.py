@@ -1,4 +1,3 @@
-
 from django.urls import path
 from . import views
 
@@ -17,17 +16,21 @@ urlpatterns = [
     path('dsearch',views.dsearch, name='dsearch'),
     path('edit',views.edit, name='edit'),
     path('didentity',views.didentity, name='didentity'),
+    path('dcontact',views.dcontact, name='dcontact'),
     path('donsearch/<str:username>/',views.donsearch, name='donsearch'),
     path('donidentity/<str:username>/',views.donidentity, name='donidentity'),
+    path('doncontact/<str:username>/',views.doncontact, name='doncontact'),
     path('donacceptreject/<str:username>/', views.donacceptreject, name='donacceptreject'),
 
     path('rdetail',views.rdetail, name='rdetail'),
     path('rdetail2',views.rdetail2, name='rdetail2'),
     path('rdashboard',views.rdashboard,name='rdashboard'),
     path('ridentity',views.ridentity, name='ridentity'),
+    path('rcontact',views.rcontact, name='rcontact'),
     path('rprofile',views.rprofile, name='rprofile'),
     path('rsearch',views.rsearch, name='rsearch'),
     path('recidentity/<str:username>/',views.recidentity, name='recidentity'),
+    path('reccontact/<str:username>/',views.reccontact, name='reccontact'),
     path('recsearch/<str:username>/',views.recsearch, name='recsearch'),
     path('recacceptreject/<str:username>/', views.recacceptreject, name='recacceptreject'),
     path('rnotification',views.rnotification, name='rnotification'),
@@ -72,4 +75,7 @@ urlpatterns = [
     path('admhosreq',views.admhosreq, name='admhosreq'),
     path('admin_home/',views.admin_home,name="admin_home"),
 
+
+    path('recreq',views.recreq, name='recreq'),
+    path('donreq',views.donreq, name='donreq'),
     ]

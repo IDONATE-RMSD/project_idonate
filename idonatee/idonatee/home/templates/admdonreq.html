@@ -1159,7 +1159,7 @@
 
       <nav id="navbar" class="nav-menu navbar">
         <ul>
-          <li><a href="/admdonar" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>HOME</span></a></li>
+          <li><a href="/admindash" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>HOME</span></a></li>
 
         
     </div> 
@@ -1175,9 +1175,10 @@
                   <th>#</th>
                   <th>Username</th>
                   <th>Full Name</th>
-                  <th>Email</th>
-                  <th>Contact</th>
+                  
                   <th>Bloodgroup</th>
+                  <th>Contact</th>
+                  
                   <th>profile</th>
 
                   <th>Identity</th>
@@ -1194,9 +1195,9 @@
                 <td>{{forloop.counter}}</td>
                 <td>{{user.username}}</td>
                   <td>{{user.fullname}}</td>
-                  <td>{{user.email}}</td>
-                  <td>{{user.mobno}}</td>
                   <td>{{user.bg}}</td>
+                  <td><a href="/doncontact/{{user.username}}">View Contact</a></td>
+                  
                   <td><a href="/donsearch/{{user.username}}">View profile</a></td>
                   <td><a href="/donidentity/{{user.username}}">View Identity</a></td>
                   {% comment %} <td><span class="label label-danger">{{user.status}}</span></td> {% endcomment %}

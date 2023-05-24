@@ -11,6 +11,8 @@ from .models import Hdetail
 from .models import Hdetail2
 from .models import Quick
 from .models import Edit
+from .models import Recreq
+from .models import Donreq
 
 
 # Register your models here.
@@ -26,3 +28,5 @@ admin.site.register(Hdetail)
 admin.site.register(Hdetail2)
 admin.site.register(Quick)
 admin.site.register(Edit)
+admin.site.register(Recreq)
+admin.site.register(Donreq)
