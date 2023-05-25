@@ -1156,11 +1156,11 @@
         </div>
       </div> {% endcomment %}
 
-      <nav id="navbar" class="nav-menu navbar">
+      {% comment %} <nav id="navbar" class="nav-menu navbar">
         <ul>
-          <li><a href="#" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>HOME</span></a></li>
+          <li><a href="/qdashboard" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>HOME</span></a></li>
 
-        
+         {% endcomment %}
     </div> 
   </header><!-- End Header -->
 
@@ -1173,12 +1173,13 @@
                 <tr>
                   <th>#</th>
                   <th>Username </th>
-                  <th>Hospital Name</th>
+                  <th>Organization Name</th>
                   <th>Email</th>
                   <th>Contact</th>
                   
                   <th>Profile</th>
                   <th>Request</th>
+                  
               </tr>
           </thead>
           <tbody>
@@ -1186,20 +1187,19 @@
             <tr>
               <td>{{forloop.counter}}</td>
               <td>{{user.username}}</td>
-                <td>{{user.hfname}}</td>
-                <td>{{user.hemail}}</td>
-                <td>{{user.hmobno}}</td>
+                <td>{{user.ofname}}</td>
+                <td>{{user.oemail}}</td>
+                <td>{{user.omobno}}</td>
                 
-                <td><a href="/hossearch/{{user.username}}">View profile</a></td>
+                <td><a href="/orgsearch/{{user.username}}">View profile</a></td>
                 {% comment %} <td><a href="/orgidentity/{{user.username}}">View Identity</a></td>
                 {% comment %} <td><span class="label label-danger">{{user.status}}</span></td> {% endcomment %}
-                     <td> <a href="/hosreq"><button type="submit" class="btn btn-danger">Request</button></a>
+                     <td> <a href="/horgreq"><button type="submit" class="btn btn-danger">Request</button></a>
                  
               </td>
                </tr>
           {% endfor %}
 
-          
       </tbody>
   </table>
   

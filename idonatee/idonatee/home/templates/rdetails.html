@@ -102,12 +102,13 @@
 
             
                         <div class="input-field">
-                            <label>Enter Your Weight</label>
-                            <input type="number" id="rweight" name="rweight" placeholder="Enter your Weight" required>
+                            <label for="rweight">Enter Your Weight</label>
+                            <input type="number" id="rweight" name="rweight" placeholder="Enter your Weight" required min="50" max="200">
                         </div>
+                        
                         <div class="input-field">
-                            <label>Enter Your Height</label>
-                            <input type="number" id="rheight" name="rheight" placeholder="Enter your Height" required>
+                            <label for="rheight">Enter Your Height</label>
+                            <input type="number" id="rheight" name="rheight" placeholder="Enter your Height" required min="140" max="300">
                         </div>
 
                         <div class="input-field">
@@ -194,4 +195,54 @@
 </form>
 </div>
 </body>
+
+<script>
+    // Get the date of birth input element
+    const dobInput = document.getElementById('rdob');
+    
+    // Add an event listener to the input element
+    dobInput.addEventListener('change', function() {
+        // Get the selected date
+        const selectedDate = new Date(this.value);
+        
+        // Get today's date
+        const today = new Date();
+        
+        // Calculate the age difference in years
+        const ageDifference = today.getFullYear() - selectedDate.getFullYear();
+        
+        // Compare the age difference with the minimum required age
+        if (ageDifference < 18) {
+            // Clear the input value and display an error message
+            this.value = '';
+            alert('You must be at least 18 years old.');
+        }
+    });
+    
+    const weightInput = document.getElementById('rweight');
+        const heightInput = document.getElementById('rheight');
+    
+        weightInput.addEventListener('input', function() {
+            const rweight = parseFloat(this.value);
+            const minWeight = parseFloat(this.min);
+            const maxWeight = parseFloat(this.max);
+    
+            if (rweight < minWeight || rweight > maxWeight) {
+                alert('Weight should be between ' + minWeight + ' and ' + maxWeight + '.');
+            }
+        });
+    
+        heightInput.addEventListener('input', function() {
+            const rheight = parseFloat(this.value);
+            const minHeight = parseFloat(this.min);
+            const maxHeight = parseFloat(this.max);
+    
+            if (rheight < minHeight || rheight > maxHeight) {
+                alert('Height should be between ' + minHeight + ' and ' + maxHeight + '.');
+            }
+        });
+    
+    
+    
+    </script>
 </html>

@@ -28,9 +28,9 @@
     {% endfor %}
 
     <div class="container">
-        <header>Request to Hospital</header>
+        <header>Request to Donor</header>
 
-        <form action="/hosreq"  method="POST" enctype="multipart/form-data">
+        <form action="/rdonreq"  method="POST" enctype="multipart/form-data">
             {%  csrf_token %}
             <div class="form first">
                 <div class="details personal">
@@ -42,7 +42,7 @@
 
                         <div class="input-field">
                             <label>Select_category</label>
-                            <select id="requesth" name="requesth" >
+                            <select id="rec_req_to_donar" name="rec_req_to_donar" >
                                 <option  disabled selected>Select Category of organ/blood</option>
                                 <option>Blood</option>
                                 <option>Kidney</option>

@@ -15,7 +15,15 @@ from .models import Recreq
 from .models import Donreq
 from .models import Orgreq
 from .models import Hosreq
-
+from .models import Rhosreq
+from .models import Rdonreq
+from .models import Rorgreq
+from .models import Odonreq
+from .models import Orecreq
+from .models import Ohosreq
+from .models import Hdonreq
+from .models import Hrecreq
+from .models import Horgreq
 
 # Register your models here.
 
@@ -34,3 +42,12 @@ admin.site.register(Recreq)
 admin.site.register(Donreq)
 admin.site.register(Orgreq)
 admin.site.register(Hosreq)
+admin.site.register(Rhosreq)
+admin.site.register(Rdonreq)
+admin.site.register(Rorgreq)
+admin.site.register(Odonreq)
+admin.site.register(Orecreq)
+admin.site.register(Ohosreq)
+admin.site.register(Hdonreq)
+admin.site.register(Hrecreq)
+admin.site.register(Horgreq)

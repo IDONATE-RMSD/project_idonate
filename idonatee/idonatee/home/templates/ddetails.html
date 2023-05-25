@@ -43,9 +43,9 @@
                         </div>
 
                         <div class="input-field">
-                            <label>Date of Birth</label>
-                            <input type="date" id="dob" name="dob" placeholder="Enter birth date" required>
-                        </div>
+    <label for="dob">Date of Birth</label>
+    <input type="date" id="dob" name="dob" placeholder="Enter birth date" required>
+</div>
 
                         <div class="input-field">
                             <label>Email</label>
@@ -68,11 +68,11 @@
 
 
                         </div>
-{% comment %} 
+
                         <div class="input-field">
                             <label>Age</label>
                             <input type="number" id="age" name="age" placeholder="Enter Your Age" required>
-                        </div> {% endcomment %}
+                        </div> 
 
                         <div class="input-field">
                             <label>Blood Group</label>
@@ -102,14 +102,15 @@
                         </div>
                         
             
-                        <div class="input-field">
-                            <label>Enter Your Weight</label>
-                            <input type="number" id="weight" name="weight" placeholder="Enter your Weight" required>
-                        </div>
-                        <div class="input-field">
-                            <label>Enter Your Height</label>
-                            <input type="number" id="height" name="height" placeholder="Enter your Height" required>
-                        </div>
+                    <div class="input-field">
+    <label for="weight">Enter Your Weight</label>
+    <input type="number" id="weight" name="weight" placeholder="Enter your Weight" required min="50" max="200">
+</div>
+
+<div class="input-field">
+    <label for="height">Enter Your Height</label>
+    <input type="number" id="height" name="height" placeholder="Enter your Height" required min="140" max="300">
+</div>
 
                         <div class="input-field">
                             <label>Allergic/Not ?</label>
@@ -156,31 +157,7 @@
 
                         </div>
 
-<!--
-                <div class="details ID">
-                    <span class="title">Identity Details</span>
 
-                    <div class="fields">
-                        <div class="input-field">
-                            <label>ID Type</label>
-                            <select id="idtype" name="idtype" required>
-                                <option  disabled selected>Select ID Type</option>
-                                <option>Aadhar</option>
-                                <option>Other</option>
-                            </select>
-                        </div>
-
-                        <div class="input-field">
-                            <label>ID Number</label>
-                            <input type="number" id="idno"  name="idno" placeholder="Enter ID number" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>Occupation</label>
-                            <input type="text"  id="job" name="job" placeholder="Enter your occupation" required>
-                        </div>
-                        -->
-                        
                         <div class="card-box">
                             <label>Image</label>
                             <input type="file" id="image" name="image" placeholder="Upload your Image" required>
@@ -197,30 +174,59 @@
 </div>
 </form>
 </div>
+
+
+
 </body>
 
 <script>
-    // Get the input element
-    var dobInput = document.getElementById('dob');
+// Get the date of birth input element
+const dobInput = document.getElementById('dob');
 
-    // Add an event listener to the input
-    dobInput.addEventListener('input', function() {
-        // Get the selected date
-        var selectedDate = new Date(this.value);
-        
-        // Calculate the minimum date of birth
-        var minDate = new Date();
-        minDate.setFullYear(minDate.getFullYear() - 18);
-        
-        // Compare the selected date with the minimum date
-        if (selectedDate > minDate) {
-            // Display an error message or take appropriate action
-            alert('You must be at least 18 years old.');
-            this.value = ''; // Clear the input field
+// Add an event listener to the input element
+dobInput.addEventListener('change', function() {
+    // Get the selected date
+    const selectedDate = new Date(this.value);
+    
+    // Get today's date
+    const today = new Date();
+    
+    // Calculate the age difference in years
+    const ageDifference = today.getFullYear() - selectedDate.getFullYear();
+    
+    // Compare the age difference with the minimum required age
+    if (ageDifference < 18) {
+        // Clear the input value and display an error message
+        this.value = '';
+        alert('You must be at least 18 years old.');
+    }
+});
+
+const weightInput = document.getElementById('weight');
+    const heightInput = document.getElementById('height');
+
+    weightInput.addEventListener('input', function() {
+        const weight = parseFloat(this.value);
+        const minWeight = parseFloat(this.min);
+        const maxWeight = parseFloat(this.max);
+
+        if (weight < minWeight || weight > maxWeight) {
+            alert('Weight should be between ' + minWeight + ' and ' + maxWeight + '.');
         }
     });
+
+    heightInput.addEventListener('input', function() {
+        const height = parseFloat(this.value);
+        const minHeight = parseFloat(this.min);
+        const maxHeight = parseFloat(this.max);
+
+        if (height < minHeight || height > maxHeight) {
+            alert('Height should be between ' + minHeight + ' and ' + maxHeight + '.');
+        }
+    });
+
+
+
 </script>
-
-
 
 </html>

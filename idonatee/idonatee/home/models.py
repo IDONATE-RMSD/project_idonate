@@ -130,4 +130,40 @@ class Orgreq(models.Model):
 
 class Hosreq(models.Model):
     username=models.CharField(max_length=20)
-    request_for=models.CharField(max_length=20)
+    requesth=models.CharField(max_length=20)
+
+class Rhosreq(models.Model):
+    username=models.CharField(max_length=20)
+    hosuserreq=models.CharField(max_length=20)
+
+class Rdonreq(models.Model):
+    username=models.CharField(max_length=20)
+    rec_req_to_donar=models.CharField(max_length=20)
+
+class Rorgreq(models.Model):
+    username=models.CharField(max_length=20)
+    rec_req_to_organization=models.CharField(max_length=20)
+
+class Odonreq(models.Model):
+    username=models.CharField(max_length=20)
+    org_req_to_donar=models.CharField(max_length=20)
+
+class Orecreq(models.Model):
+    username=models.CharField(max_length=20)
+    Org_req_to_rec=models.CharField(max_length=20)
+
+class Ohosreq(models.Model):
+    username=models.CharField(max_length=20)
+    org_req_to_hos=models.CharField(max_length=20)
+
+class Hdonreq(models.Model):
+    username=models.CharField(max_length=20)
+    hospital_req_to_don=models.CharField(max_length=20)
+
+class Hrecreq(models.Model):
+    username=models.CharField(max_length=20)
+    hsl_req_to_rec=models.CharField(max_length=20)
+
+class Horgreq(models.Model):
+    username=models.CharField(max_length=20)
+    hsl_req_to_organization=models.CharField(max_length=20)
