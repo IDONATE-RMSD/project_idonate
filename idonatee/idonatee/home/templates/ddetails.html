@@ -68,11 +68,11 @@
 
 
                         </div>
-
+{% comment %} 
                         <div class="input-field">
                             <label>Age</label>
                             <input type="number" id="age" name="age" placeholder="Enter Your Age" required>
-                        </div>
+                        </div> {% endcomment %}
 
                         <div class="input-field">
                             <label>Blood Group</label>
@@ -198,4 +198,29 @@
 </form>
 </div>
 </body>
+
+<script>
+    // Get the input element
+    var dobInput = document.getElementById('dob');
+
+    // Add an event listener to the input
+    dobInput.addEventListener('input', function() {
+        // Get the selected date
+        var selectedDate = new Date(this.value);
+        
+        // Calculate the minimum date of birth
+        var minDate = new Date();
+        minDate.setFullYear(minDate.getFullYear() - 18);
+        
+        // Compare the selected date with the minimum date
+        if (selectedDate > minDate) {
+            // Display an error message or take appropriate action
+            alert('You must be at least 18 years old.');
+            this.value = ''; // Clear the input field
+        }
+    });
+</script>
+
+
+
 </html>

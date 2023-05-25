@@ -1,7 +1,7 @@
 from email import message
 from django.shortcuts import render,redirect
 from django.contrib import messages
-from .models import Signupp,Detail,Rdetail,Odetail,Odetail2,Hdetail,Hdetail2,Detail2,Quick,Rdetail2,Edit,Recreq,Donreq
+from .models import Signupp,Detail,Rdetail,Odetail,Odetail2,Hdetail,Hdetail2,Detail2,Quick,Rdetail2,Edit,Recreq,Donreq,Orgreq,Hosreq
 
 # Create your views here.
 #global val
@@ -831,6 +831,27 @@ def recreq(request):
         return render(request, "dsearch.html")
     
     return render(request, "recreq.html")
+
+
+def orgreq(request):
+    if request.method == "POST":
+        request = request.POST['request']
+        username=val()
+        orgreq = Orgreq(username=username, request=request)
+        orgreq.save()
+        # messages.success(request, "Details added successfully")
+        return render(request, "dsearch.html")
+    return render(request, "orgreq.html")
+
+def hosreq(request):
+    if request.method == "POST":
+        request_for = request.POST['request_for']
+        username=val()
+        hosreq = Orgreq(username=username, request_for=request_for)
+        hosreq.save()
+        # messages.success(request, "Details added successfully")
+        return render(request, "dsearch.html")
+    return render(request, "hosreq.html")
 
 
 def donreq(request):

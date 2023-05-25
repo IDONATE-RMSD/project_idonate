@@ -123,3 +123,11 @@ class Recreq(models.Model):
 class Donreq(models.Model):
     username=models.CharField(max_length=20)
     scod=models.CharField(max_length=20)
+
+class Orgreq(models.Model):
+    username=models.CharField(max_length=20)
+    request=models.CharField(max_length=20)
+
+class Hosreq(models.Model):
+    username=models.CharField(max_length=20)
+    request_for=models.CharField(max_length=20)

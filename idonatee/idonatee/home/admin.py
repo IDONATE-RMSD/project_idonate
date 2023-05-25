@@ -13,6 +13,8 @@ from .models import Quick
 from .models import Edit
 from .models import Recreq
 from .models import Donreq
+from .models import Orgreq
+from .models import Hosreq
 
 
 # Register your models here.
@@ -30,3 +32,5 @@ admin.site.register(Quick)
 admin.site.register(Edit)
 admin.site.register(Recreq)
 admin.site.register(Donreq)
+admin.site.register(Orgreq)
+admin.site.register(Hosreq)

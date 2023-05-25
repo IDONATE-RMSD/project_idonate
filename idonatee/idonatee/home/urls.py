@@ -78,4 +78,6 @@ urlpatterns = [
 
     path('recreq',views.recreq, name='recreq'),
     path('donreq',views.donreq, name='donreq'),
+    path('orgreq',views.orgreq, name='orgreq'),
+    path('hosreq',views.orgreq, name='hosreq'),
     ]
