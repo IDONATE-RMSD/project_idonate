@@ -1156,12 +1156,7 @@
         </div>
       </div> {% endcomment %}
 
-      <nav id="navbar" class="nav-menu navbar">
-        <ul>
-          <li><a href="#" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>HOME</span></a></li>
-
-        
-    </div> 
+      
   </header><!-- End Header -->
 
   <section id="about" class="about">
@@ -1193,9 +1188,11 @@
                 <td><a href="/hossearch/{{user.username}}">View profile</a></td>
                 {% comment %} <td><a href="/orgidentity/{{user.username}}">View Identity</a></td>
                 {% comment %} <td><span class="label label-danger">{{user.status}}</span></td> {% endcomment %}
-                     <td> <a href="\rhosreq"><button type="submit" class="btn btn-danger">Request</button></a>
-                 
-              </td>
+                <td>
+                  <a href="/rhosreq?rhosusername={{ user.username }}">
+                    <button type="submit" class="btn btn-danger">Request</button>
+                  </a>
+                </td>
                </tr>
           {% endfor %}
 
@@ -1221,7 +1218,13 @@
 
   <!-- Template Main JS File -->
   <script src="{% static '/js/profile.js' %}"></script>
+  <button onclick="goBack()">Go Back</button>
 
+  <script>
+  function goBack() {
+    window.history.back();
+  }
+  </script>
 </body>
 
 </html>

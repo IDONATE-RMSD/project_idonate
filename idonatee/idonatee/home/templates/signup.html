@@ -37,7 +37,7 @@
 
         <div class="form__field">
           <input type="password" name="password" placeholder="Enter password" id="myInput" required>
-          <p><input type="checkbox" onclick="myFunction()">Show Password</p>
+          {% comment %} <p><input type="checkbox" onclick="myFunction()">Show Password</p> {% endcomment %}
 
           
         </div>
@@ -67,14 +67,21 @@
       <p>Already have an account? <a href="{% url 'login' %}">Log in</a></p>
 
     </div> 
+    
 
   </div>
+  <button onclick="goBack()">Go Back</button>
 
+  <script>
+  function goBack() {
+    window.history.back();
+  }
+  </script>
 </body>
 </html>
 
 
-<script>
+{% comment %} <script>
   function myFunction() {
     var x = document.getElementById("myInput");
     if (x.type === "password") {
@@ -83,4 +90,4 @@
       x.type = "password";
     }
   }
-  </script>
+  </script> {% endcomment %}

@@ -1194,9 +1194,11 @@
                 <td><a href="/orgsearch/{{user.username}}">View profile</a></td>
                 {% comment %} <td><a href="/orgidentity/{{user.username}}">View Identity</a></td>
                 {% comment %} <td><span class="label label-danger">{{user.status}}</span></td> {% endcomment %}
-                     <td> <a href="/orgreq"><button type="submit" class="btn btn-danger">Request</button></a>
-                 
-              </td>
+                <td>
+                  <a href="/orgreq?orgusername={{ user.username }}">
+                    <button type="submit" class="btn btn-danger">Request</button>
+                  </a>
+                </td>
                </tr>
           {% endfor %}
 
@@ -1221,6 +1223,14 @@
 
   <!-- Template Main JS File -->
   <script src="{% static '/js/profile.js' %}"></script>
+
+  <button onclick="goBack()">Go Back</button>
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
 
 </body>
 

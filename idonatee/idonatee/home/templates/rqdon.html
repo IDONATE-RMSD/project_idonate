@@ -1182,10 +1182,11 @@
                 <td>{{user.mobno}}</td> {% endcomment %}
                 <td>{{user.bg}}</td>
                 <td><a href="/donsearch/{{user.username}}">View profile</a></td>
-                <td> <a href="/rdonreq"><button type="submit" class="btn btn-danger">Request</button></a>
-               
-                {% comment %} <td> <a href="/recacceptreject/{{user.username}}"><button type="submit" class="btn btn-danger">assign_status</button></a>
-               </tr> {% endcomment %}
+                <td>
+                  <a href="/rdonreq?rdonusername={{ user.username }}">
+                    <button type="submit" class="btn btn-danger">Request</button>
+                  </a>
+                </td>
           {% endfor %}
           
       </tbody>
@@ -1209,7 +1210,13 @@
 
   <!-- Template Main JS File -->
   <script src="{% static '/js/profile.js' %}"></script>
+  <button onclick="goBack()">Go Back</button>
 
+  <script>
+  function goBack() {
+    window.history.back();
+  }
+  </script>
 </body>
 
 </html>

@@ -127,22 +127,27 @@ class Donreq(models.Model):
 
 class Orgreq(models.Model):
     username=models.CharField(max_length=20)
+    orgusername=models.CharField(max_length=20)
     request=models.CharField(max_length=20)
 
 class Hosreq(models.Model):
     username=models.CharField(max_length=20)
+    hosusername=models.CharField(max_length=20)
     requesth=models.CharField(max_length=20)
 
 class Rhosreq(models.Model):
     username=models.CharField(max_length=20)
+    rhosusername=models.CharField(max_length=20)
     hosuserreq=models.CharField(max_length=20)
 
 class Rdonreq(models.Model):
     username=models.CharField(max_length=20)
+    rdonusername=models.CharField(max_length=20)
     rec_req_to_donar=models.CharField(max_length=20)
 
 class Rorgreq(models.Model):
     username=models.CharField(max_length=20)
+    rorgusername=models.CharField(max_length=20)
     rec_req_to_organization=models.CharField(max_length=20)
 
 class Odonreq(models.Model):

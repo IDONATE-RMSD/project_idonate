@@ -111,7 +111,7 @@ def admin_home(request):
 
 
 def signout(request):
-    messages.success(request,"Logged Out successfully!")
+    # messages.success(request,"Logged Out successfully!")
     return redirect('home')
 
 def dashboard(request):
@@ -170,7 +170,7 @@ def detail(request):
         #messages.success(request, "Your account has created successfully")
         det = Detail(username=username, fullname=fullname, dob=dob, email=email, mobno=mobno, ge=ge, age=age, bg=bg, address=address, occupation=occupation, weight=weight, height=height, an=an, tmr=tmr, ldd=ldd, dbo=dbo, image=image)
         det.save()
-        messages.success(request, "Details added successfully")
+        # messages.success(request, "Details added successfully")
         return render(request, "details2.html")
     
     return render(request, "ddetails.html")
@@ -194,7 +194,7 @@ def edit(request):
         #messages.success(request, "Your account has created successfully")
         edit = Edit(don_edit_email = don_edit_email,don_edit_mobno = don_edit_mobno,don_edit_address = don_edit_address,don_edit_occupation = don_edit_occupation,don_edit_weight = don_edit_weight,don_edit_height = don_edit_height,don_edit_an = don_edit_an,don_edit_tmr=don_edit_tmr,don_edit_ldd = don_edit_ldd,don_edit_sid = don_edit_sid,don_edit_eidn = don_edit_eidn,don_edit_dsbg = don_edit_dsbg)
         edit.save()
-        messages.success(request, "Details added successfully")
+        # messages.success(request, "Details added successfully")
         return render(request, "dashboard.html")
     
     return render(request, "edit.html")
@@ -229,7 +229,7 @@ def rdetail(request):
 
         rdet = Rdetail(username=username, fname=fname, rdob=rdob, remail=remail, rmobno=rmobno, rge=rge, rage=rage, rbg=rbg, raddress=raddress, roccupation=roccupation, rweight=rweight, rheight=rheight, ran=ran, rtmr=rtmr, rlrd=rlrd, rdbo=rdbo, rimage=rimage)
         rdet.save()
-        messages.success(request, "Details added successfully")
+        # messages.success(request, "Details added successfully")
         return render(request, "rdetail2.html")
     
     return render(request, "rdetails.html")
@@ -351,7 +351,7 @@ def hdetail(request):
         # messages.success(request,"Your account has created successfully")
         hdet = Hdetail(username=username, hfname=hfname, hemail=hemail, hmobno=hmobno, haddress=haddress, bbp=bbp, obp=obp, himage=himage)
         hdet.save()
-        messages.success(request, "Details added successfully")
+        # messages.success(request, "Details added successfully")
         return render(request, "hdetail2.html")
 
     return render(request, "hdetails.html")
@@ -415,7 +415,7 @@ def detail2(request):
         #messages.success(request, "Your account has created successfully")
         det2 = Detail2(username=username, sid=sid, eidn=eidn, dsbg=dsbg)
         det2.save()
-        messages.success(request, "Details added successfully")
+        # messages.success(request, "Details added successfully")
         return render(request, "dashboard.html")
     
     return render(request, "details2.html")
@@ -434,7 +434,7 @@ def rdetail2(request):
 
         rdet2 = Rdetail2(username=username, rsid=rsid, reidn=reidn, rdsbg=rdsbg)
         rdet2.save()
-        messages.success(request, "Details added successfully")
+        # messages.success(request, "Details added successfully")
         return render(request, "rdashboard.html")
     
     return render(request, "rdetail2.html")
@@ -453,7 +453,7 @@ def quick(request):
         #messages.success(request,"Your account has created successfully")
         detq=Quick(qfname=qfname,qemail=qemail,qmobno=qmobno,qaddress=qaddress)
         detq.save()
-        messages.success(request,"Details added successfully")
+        # messages.success(request,"Details added successfully")
         return render(request,"qdashboard.html")
     return render(request, "quick.html")
 
@@ -911,14 +911,19 @@ def hrecreq(request):
 
 def orgreq(request):
     global val
+    od = Odetail.objects.all()
+
     if request.method == "POST":
         request = request.POST['request']
-        username=val()
-        orgreq = Orgreq(username=username, request=request)
-        orgreq.save()
+        for o in od:
+            orgusername = o.username  # Retrieve the username from each Odetail object in the queryset
+            
+            username=val()
+            orgreq = Orgreq(username=username, request=request, orgusername=orgusername)
+            orgreq.save()
         # messages.success(request, "Details added successfully")
         return redirect('dsearch')
-    return render(request, "orgreq.html")
+    return render(request, "orgreq.html",{'od': od})
 
 # def hosreq(request):
 #     global val
@@ -933,26 +938,34 @@ def orgreq(request):
 
 def hosreq(request):
     global val
+    hd = Hdetail.objects.all()
+
     if request.method == "POST":
         requesth = request.POST['requesth']
-        username=val()
-        dhosreq = Hosreq(username=username, requesth=requesth)
-        dhosreq.save()
+        for h in hd:
+            hosusername = h.username 
+            username=val()
+            dhosreq = Hosreq(username=username, requesth=requesth,hosusername=hosusername)
+            dhosreq.save()
         # messages.success(request, "Details added successfully")
         return redirect('dsearch')
 
-    return render(request, "hosreq.html")
+    return render(request, "hosreq.html",{'hd': hd})
 
 
 def rdonreq(request):
+    global val
+    rdd = Detail.objects.all()
     if request.method == "POST":
         rec_req_to_donar = request.POST['rec_req_to_donar']
+        for rd in rdd:
+            rdonusername = rd.username
         username=val()
-        rdonreq = Rdonreq(username=username, rec_req_to_donar=rec_req_to_donar)
+        rdonreq = Rdonreq(username=username, rec_req_to_donar=rec_req_to_donar,rdonusername=rdonusername)
         rdonreq.save()
         # messages.success(request, "Details added successfully")
         return render(request, "rsearch.html")
-    return render(request, "rdonreq.html")
+    return render(request, "rdonreq.html",{'rdd': rdd})
 
 def odonreq(request):
     if request.method == "POST":
@@ -976,14 +989,18 @@ def hdonreq(request):
 
 
 def rorgreq(request):
+    global val
+    rod = Odetail.objects.all()
     if request.method == "POST":
         rec_req_to_organization = request.POST['rec_req_to_organization']
-        username=val()
-        rorgreq = Rorgreq(username=username, rec_req_to_organization=rec_req_to_organization)
-        rorgreq.save()
+        for ro in rod:
+            rorgusername = o.username 
+            username=val()
+            rorgreq = Rorgreq(username=username, rec_req_to_organization=rec_req_to_organization,rorgusername=rorgusername)
+            rorgreq.save()
         # messages.success(request, "Details added successfully")
         return render(request, "rsearch.html")
-    return render(request, "rorgreq.html")
+    return render(request, "rorgreq.html",{'rod': rod})
 
 def horgreq(request):
     if request.method == "POST":
@@ -997,14 +1014,19 @@ def horgreq(request):
 
 
 def rhosreq(request):
+    global val
+    rhd = Hdetail.objects.all()
+
     if request.method == "POST":
         hosuserreq = request.POST['hosuserreq']
-        username=val()
-        rhosreq = Rhosreq(username=username, hosuserreq=hosuserreq)
-        rhosreq.save()
+        for rh in rhd:
+            rhosusername = rh.username
+            username=val()
+            rhosreq = Rhosreq(username=username, hosuserreq=hosuserreq,rhosusername=rhosusername)
+            rhosreq.save()
         # messages.success(request, "Details added successfully")
         return render(request, "rsearch.html")
-    return render(request, "rhosreq.html")
+    return render(request, "rhosreq.html",{'rhd': rhd})
 
 def ohosreq(request):
     if request.method == "POST":

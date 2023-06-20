@@ -38,7 +38,10 @@
 
                     <div class="fields">
                   
-
+                        <div class="user-box">
+                            <label>Donor name</label>
+                            <input type="text" name="rdonusername" id="rdonusername" disabled>
+                          </div>
 
                         <div class="input-field">
                             <label>Select_category</label>
@@ -65,6 +68,25 @@
     </div> 
 </div>
 </form>
+<button onclick="goBack()">Go Back</button>
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
+</div>
+
+</body>
+<script>
+  // Retrieve the username from the URL parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const rdonusername = urlParams.get('rdonusername');
+
+  // Set the username as the value of the disabled input field
+  document.getElementById('rdonusername').value = rdonusername;
+</script>
+</html>
 </div>
 </body>
 </html>

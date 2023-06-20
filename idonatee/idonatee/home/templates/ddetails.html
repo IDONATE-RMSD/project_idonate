@@ -30,6 +30,8 @@
     <div class="container">
         <header>iDonate Registration</header>
 
+        
+
         <form action="/detail"  method="POST" enctype="multipart/form-data">
             {%  csrf_token %}
             <div class="form first">
@@ -167,17 +169,28 @@
                             <span class="btnText">NEXT</span>
                             <i class="uil uil-navigator"></i>
                         </button>
+                        <button onclick="goBack()">Go Back</button>
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
                 </div> 
+                
             </div>
         </div>
     </div> 
+    
 </div>
 </form>
 </div>
 
 
 
+
 </body>
+
 
 <script>
 // Get the date of birth input element
