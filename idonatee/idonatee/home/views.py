@@ -868,15 +868,22 @@ def hsearch(request):
     return render(request,'hsearch.html')
 
 def recreq(request):
+    global val
+    rd = Rdetail.objects.all()
+
     if request.method == "POST":
         scor = request.POST['scor']
-        username=val()
-        recreq = Recreq(username=username, scor=scor)
-        recreq.save()
-        # messages.success(request, "Details added successfully")
+
+        for r in rd:
+            recusername = r.username  # Retrieve the username from each Rdetail object in the queryset
+            username = val()
+            recreq = Recreq(username=username, scor=scor, recusername=recusername)
+            recreq.save()
+        
         return render(request, "dsearch.html")
     
-    return render(request, "recreq.html")
+    return render(request, "recreq.html", {'rd': rd})
+
 
 def orecreq(request):
     if request.method == "POST":

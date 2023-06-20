@@ -118,6 +118,7 @@ class Quick(models.Model):
 
 class Recreq(models.Model):
     username=models.CharField(max_length=20)
+    recusername=models.CharField(max_length=20)
     scor=models.CharField(max_length=20)
 
 class Donreq(models.Model):

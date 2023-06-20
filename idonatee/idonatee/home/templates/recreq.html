@@ -38,7 +38,13 @@
 
                     <div class="fields">
                   
-
+                        <div class="user-box">
+                            <label>
+                                Reciever name</label>
+                                {% for user in rd %}
+                            <input type="text" name="recusername" id= "recusername" value="{{ user.username }}"  disabled>
+                          </div>
+                          {% endfor %}
 
                         <div class="input-field">
                             <label>Select_category_of_Receiving</label>
