@@ -30,47 +30,42 @@
     <div class="container">
         <header>Receiver Request</header>
 
-        <form action="/recreq"  method="POST" enctype="multipart/form-data">
-            {%  csrf_token %}
-            <div class="form first">
-                <div class="details personal">
-                
-
-                    <div class="fields">
-                  
-                        <div class="user-box">
-                            <label>
-                                Reciever name</label>
-                                {% for user in rd %}
-                            <input type="text" name="recusername" id= "recusername" value="{{ user.username }}"  disabled>
-                          </div>
-                          {% endfor %}
-
-                        <div class="input-field">
-                            <label>Select_category_of_Receiving</label>
-                            <select id="scor" name="scor" >
-                                <option  disabled selected>Select Category of Receiving</option>
-                                <option>Blood</option>
-                                <option>Kidney</option>
-                                <option>Liver</option>
-                                <option>Lungs</option>
-                                <option>Eye</option>
-                            </select>
-
-
-                        </div>
-
-                    
-                        <button class="sumbit">
-                            <span class="btnText">REQUEST</span>
-                            <i class="uil uil-navigator"></i>
-                        </button>
-                </div> 
-            </div>
+ <form action="/recreq" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="form first">
+    <div class="details personal">
+      <div class="fields">
+         <div class="user-box">
+          <label>Receiver name</label>
+          <input type="text" name="recusername" id="recusername" disabled>
         </div>
-    </div> 
-</div>
+        <div class="input-field">
+          <label>Select category of receiving</label>
+          <select id="scor" name="scor">
+            <option disabled selected>Select Category of Receiving</option>
+            <option>Blood</option>
+            <option>Kidney</option>
+            <option>Liver</option>
+            <option>Lungs</option>
+            <option>Eye</option>
+          </select>
+        </div>
+        <button class="submit" onclick="setReceiverName(event)">
+          <span class="btnText">REQUEST</span>
+          <i class="uil uil-navigator"></i>
+        </button>
+      </div>
+    </div>
+  </div>
 </form>
 </div>
 </body>
+<script>
+  // Retrieve the username from the URL parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const recusername = urlParams.get('recusername');
+
+  // Set the username as the value of the disabled input field
+  document.getElementById('recusername').value = recusername;
+</script>
 </html>

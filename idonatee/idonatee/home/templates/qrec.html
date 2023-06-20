@@ -1172,28 +1172,33 @@
                   
               </tr>
           </thead>
-          <tbody>
-            {% for user in rd %}
-            <tr>
-              <td>{{forloop.counter}}</td>
-              <td>{{user.username}}</td>
-                <td>{{user.fname}}</td>
-                {% comment %} <td>{{user.remail}}</td>
-                <td>{{user.rmobno}}</td> {% endcomment %}
-                <td>{{user.rbg}}</td>
-                <td><a href="/recsearch/{{user.username}}">View profile</a></td>
-                <form action="/recreq" method="POST">
-                {% csrf_token %}
-                <input type="hidden" name="recusername" value="{{ user.username }}">
-                <button type="submit" class="btn btn-danger">Request</button>
-            </form>
-                <td> <a href="/recreq"><button type="submit" class="btn btn-danger">Request</button></a>
-               
-                {% comment %} <td> <a href="/recacceptreject/{{user.username}}"><button type="submit" class="btn btn-danger">assign_status</button></a>
-               </tr> {% endcomment %}
-          {% endfor %}
-          
-      </tbody>
+       <tbody>
+  {% for user in rd %}
+  <tr>
+    <td>{{forloop.counter}}</td>
+    <td>{{user.username}}</td>
+    <td>{{user.fname}}</td>
+    {% comment %}
+    <td>{{user.remail}}</td>
+    <td>{{user.rmobno}}</td>
+    {% endcomment %}
+    <td>{{user.rbg}}</td>
+    <td><a href="/recsearch/{{user.username}}">View profile</a></td>
+    {% comment %}
+    <form action="/recreq" method="POST">
+      {% csrf_token %}
+      <input type="hidden" name="recusername" value="{{ user.username }}">
+      <button type="submit" class="btn btn-danger">Request</button>
+    </form>
+    {% endcomment %}
+    <td>
+      <a href="/recreq?recusername={{ user.username }}">
+        <button type="submit" class="btn btn-danger">Request</button>
+      </a>
+    </td>
+  {% endfor %}
+</tbody>
+
   </table>
   
     
