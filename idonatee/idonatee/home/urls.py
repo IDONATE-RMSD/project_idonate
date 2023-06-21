@@ -14,7 +14,7 @@ urlpatterns = [
     path('dashboard',views.dashboard,name='dashboard'),
     path('profile',views.profile, name='profile'),
     path('dsearch',views.dsearch, name='dsearch'),
-    path('edit',views.edit, name='edit'),
+    path('donnoti',views.donnoti, name='donnoti'),
     path('didentity',views.didentity, name='didentity'),
     path('dcontact',views.dcontact, name='dcontact'),
     path('donsearch/<str:username>/',views.donsearch, name='donsearch'),
@@ -29,6 +29,7 @@ urlpatterns = [
     path('rcontact',views.rcontact, name='rcontact'),
     path('rprofile',views.rprofile, name='rprofile'),
     path('rsearch',views.rsearch, name='rsearch'),
+    path('recnoti',views.recnoti, name='recnoti'),
     path('rqdon',views.rqdon, name='rqdon'),
     path('rdonreq',views.rdonreq, name='rdonreq'),
     path('rqorg',views.rqorg, name='rqorg'),
@@ -97,4 +98,14 @@ urlpatterns = [
     path('recreq',views.recreq, name='recreq'),
     path('orgreq',views.orgreq, name='orgreq'),
     path('hosreq',views.hosreq, name='hosreq'),
+
+
+    path('rectodon',views.rectodon, name='rectodon'),
+    path('orgtodon',views.orgtodon, name='orgtodon'),
+    path('hostodon',views.hostodon, name='hostodon'),
+
+    path('dontorec',views.dontorec, name='dontorec'),
+    path('orgtorec',views.orgtorec, name='orgtorec'),
+
+
     ]
