@@ -1182,9 +1182,11 @@
                 <td>{{user.rmobno}}</td> {% endcomment %}
                 <td>{{user.rbg}}</td>
                 <td><a href="/recsearch/{{user.username}}">View profile</a></td>
-                <td> <a href="/orecreq"><button type="submit" class="btn btn-danger">Request</button></a>
-               
-                {% comment %} <td> <a href="/recacceptreject/{{user.username}}"><button type="submit" class="btn btn-danger">assign_status</button></a>
+                <td>
+                  <a href="/orecreq?orecusername={{ user.username }}">
+                    <button type="submit" class="btn btn-danger">Request</button>
+                  </a>
+                </td>{% comment %} <td> <a href="/recacceptreject/{{user.username}}"><button type="submit" class="btn btn-danger">assign_status</button></a>
                </tr> {% endcomment %}
           {% endfor %}
           
@@ -1209,6 +1211,13 @@
 
   <!-- Template Main JS File -->
   <script src="{% static '/js/profile.js' %}"></script>
+  <button onclick="goBack()">Go Back</button>
+
+  <script>
+  function goBack() {
+    window.history.back();
+  }
+  </script>
 
 </body>
 

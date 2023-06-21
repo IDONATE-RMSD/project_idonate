@@ -886,26 +886,34 @@ def recreq(request):
 
 
 def orecreq(request):
+    global val
+    ord = Rdetail.objects.all()
     if request.method == "POST":
         Org_req_to_rec = request.POST['Org_req_to_rec']
+        for rr in ord:
+            orecusername = rr.username 
         username=val()
-        orecreq = Orecreq(username=username, Org_req_to_rec=Org_req_to_rec)
+        orecreq = Orecreq(username=username, Org_req_to_rec=Org_req_to_rec,orecusername=orecusername)
         orecreq.save()
         # messages.success(request, "Details added successfully")
         return render(request, "osearch.html")
     
-    return render(request, "orecreq.html")
+    return render(request, "orecreq.html", {'ord': ord})
 
 def hrecreq(request):
+    global val
+    hrd = Rdetail.objects.all()
     if request.method == "POST":
         hsl_req_to_rec = request.POST['hsl_req_to_rec']
-        username=val()
-        hrecreq = Hrecreq(username=username, hsl_req_to_rec=hsl_req_to_rec)
-        hrecreq.save()
+        for rr in hrd:
+            hrecusername = rr.username 
+            username=val()
+            hrecreq = Hrecreq(username=username, hsl_req_to_rec=hsl_req_to_rec,hrecusername=hrecusername)
+            hrecreq.save()
         # messages.success(request, "Details added successfully")
         return render(request, "hsearch.html")
     
-    return render(request, "hrecreq.html")
+    return render(request, "hrecreq.html", {'hrd': hrd})
 
 
 
@@ -968,24 +976,32 @@ def rdonreq(request):
     return render(request, "rdonreq.html",{'rdd': rdd})
 
 def odonreq(request):
+    global val
+    odd = Detail.objects.all()
     if request.method == "POST":
         org_req_to_donar = request.POST['org_req_to_donar']
+        for od in odd:
+            rdonusername = od.username
         username=val()
-        odonreq = Odonreq(username=username, org_req_to_donar=org_req_to_donar)
+        odonreq = Odonreq(username=username, org_req_to_donar=org_req_to_donar,rdonusername=rdonusername)
         odonreq.save()
         # messages.success(request, "Details added successfully")
         return render(request, "osearch.html")
-    return render(request, "odonreq.html")
+    return render(request, "odonreq.html",{'odd': odd})
 
 def hdonreq(request):
+    global val
+    hdd = Detail.objects.all()
     if request.method == "POST":
         hospital_req_to_don = request.POST['hospital_req_to_don']
-        username=val()
-        hdonreq = Hdonreq(username=username, hospital_req_to_don=hospital_req_to_don)
-        hdonreq.save()
+        for hd in hdd:
+            hdonusername = hd.username
+            username=val()
+            hdonreq = Hdonreq(username=username, hospital_req_to_don=hospital_req_to_don,hdonusername=hdonusername)
+            hdonreq.save()
         # messages.success(request, "Details added successfully")
         return render(request, "hsearch.html")
-    return render(request, "hdonreq.html")
+    return render(request, "hdonreq.html",{'hdd': hdd})
 
 
 def rorgreq(request):
@@ -1003,14 +1019,18 @@ def rorgreq(request):
     return render(request, "rorgreq.html",{'rod': rod})
 
 def horgreq(request):
+    global val
+    hrd = Rdetail.objects.all()
     if request.method == "POST":
         hsl_req_to_organization = request.POST['hsl_req_to_organization']
-        username=val()
-        horgreq = Horgreq(username=username, hsl_req_to_organization=hsl_req_to_organization)
-        horgreq.save()
+        for hr in hrd:
+            hrecusername = hr.username 
+            username=val()
+            horgreq = Horgreq(username=username, hsl_req_to_organization=hsl_req_to_organization,hrecusername=hrecusername)
+            horgreq.save()
         # messages.success(request, "Details added successfully")
         return render(request, "hsearch.html")
-    return render(request, "horgreq.html")
+    return render(request, "horgreq.html", {'hrd': hrd})
 
 
 def rhosreq(request):
@@ -1029,14 +1049,18 @@ def rhosreq(request):
     return render(request, "rhosreq.html",{'rhd': rhd})
 
 def ohosreq(request):
+    global val
+    ohd = Hdetail.objects.all()
     if request.method == "POST":
         org_req_to_hos = request.POST['org_req_to_hos']
-        username=val()
-        ohosreq = Ohosreq(username=username, org_req_to_hos=org_req_to_hos)
-        ohosreq.save()
+        for oh in ohd:
+            ohosusername = oh.username 
+            username=val()
+            ohosreq = Ohosreq(username=username, org_req_to_hos=org_req_to_hos,ohosusername=ohosusername)
+            ohosreq.save()
         # messages.success(request, "Details added successfully")
         return render(request, "osearch.html")
-    return render(request, "ohosreq.html")
+    return render(request, "ohosreq.html",{'ohd': ohd})
 
 
 def donreq(request):

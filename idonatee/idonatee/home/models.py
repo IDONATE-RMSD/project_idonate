@@ -152,24 +152,30 @@ class Rorgreq(models.Model):
 
 class Odonreq(models.Model):
     username=models.CharField(max_length=20)
+    odonusername=models.CharField(max_length=20)
     org_req_to_donar=models.CharField(max_length=20)
 
 class Orecreq(models.Model):
     username=models.CharField(max_length=20)
+    orecusername=models.CharField(max_length=20)
     Org_req_to_rec=models.CharField(max_length=20)
 
 class Ohosreq(models.Model):
     username=models.CharField(max_length=20)
+    ohosusername=models.CharField(max_length=20)
     org_req_to_hos=models.CharField(max_length=20)
 
 class Hdonreq(models.Model):
     username=models.CharField(max_length=20)
+    hdonusername=models.CharField(max_length=20)
     hospital_req_to_don=models.CharField(max_length=20)
 
 class Hrecreq(models.Model):
     username=models.CharField(max_length=20)
+    hrecusername=models.CharField(max_length=20)
     hsl_req_to_rec=models.CharField(max_length=20)
 
 class Horgreq(models.Model):
     username=models.CharField(max_length=20)
+    horgusername=models.CharField(max_length=20)
     hsl_req_to_organization=models.CharField(max_length=20)
