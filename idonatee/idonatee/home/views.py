@@ -867,6 +867,34 @@ def osearch(request):
 def hsearch(request):
     return render(request,'hsearch.html')
 
+def donnoti(request):  
+    return render(request,'donnoti.html')
+
+def recnoti(request):  
+    return render(request,'recnoti.html')
+
+def rectodon(request): 
+    rd=Rdonreq.objects.all()
+    return render(request,'rectodon.html',{'rd': rd})
+
+def orgtodon(request): 
+    rd=Odonreq.objects.all()
+    return render(request,'orgtodon.html',{'rd': rd})
+
+def hostodon(request): 
+    rd=Hdonreq.objects.all()
+    return render(request,'hostodon.html',{'rd': rd})
+
+def dontorec(request): 
+    rd=Recreq.objects.all()
+    return render(request,'dontorec.html',{'rd': rd})
+
+def orgtorec(request): 
+    rd=Orecreq.objects.all()
+    return render(request,'orgtorec.html',{'rd': rd})
+
+   
+
 def recreq(request):
     global val
     rd = Rdetail.objects.all()

@@ -1,0 +1,102 @@
+{% load static %} 
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="{% static '/css/dashboard.css' %}">
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+      <link rel="icon" href="{% static '/images/logo.png' %}" type="image/png">
+
+    <title>iDonate</title>
+</head>
+{% load static %} 
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+
+           
+            <ul>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-home"></i>
+                        <div class="title">iDonate</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="/dashboard">
+                        <i class="fas fa-th-large"></i>
+                        <div class="title">Dashboard</div>
+                    </a>
+                </li>
+   
+                
+                <li>
+                    <a href="/signout">
+                        <i class="fas fa-window-close"></i>
+                        <div class="title">Signout</div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="main">
+            <div class="top-bar">
+                {% comment %} <div class="search">
+                    <a href="/match">
+                    <input type="text" name="search" placeholder="Search User Here!">
+                    <label for="search"><i class="fas fa-search"></i></label>
+                        </a>
+                </div> {% endcomment %}
+                <i class="fas fa-bell"></i>
+                <div class="user">
+                    <img src="{% static '/images/logo.png' %}" alt="">
+                </div>
+            </div>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-content">
+                       
+                        <div class="number"> <a href="/dontorec"></div>
+                        <div class="card-name">Request from Donor</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class="fas fa-arrow-alt-circle-down fa-rotate-180"></i>
+                    </div>
+                </a>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                       <div class="number"> <a href="/orgtorec"></div>
+                        <div class="card-name">Request from Organization</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class="far fa-handshake"></i>
+                    </div></a>
+                </div>
+                
+                
+                
+                <div class="card">
+                    <div class="card-content">
+                        
+                        <div class="number"><a href="/hostorec"></div>
+                        <div class="card-name">Request from Hospital</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class="far fa-hospital"></i>
+                    </div>
+                </div>
+            </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
