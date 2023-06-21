@@ -39,13 +39,13 @@
                     <div class="fields">
                         <div class="user-box">
                             <label>Organization name</label>
-                            <input type="text" name="orgusername" id="orgusername" disabled>
+                            <input type="text" name="orgusername" id="orgusernamee" >
                           </div>
 
 
                         <div class="input-field">
                             <label>Select_category</label>
-                            <select id="request" name="request" >
+                            <select id="orequest" name="orequest" >
                                 <option  disabled selected>Select Category of organ/blood</option>
                                 <option>Blood</option>
                                 <option>Kidney</option>
@@ -59,7 +59,7 @@
                         
 
                     
-                        <button class="sumbit" onclick="setOrganizationName(event)">
+                        <button class="submit">
                             <span class="btnText">REQUEST</span>
                             <i class="uil uil-navigator"></i>
                         </button>
@@ -75,6 +75,11 @@
 <button onclick="goBack()">Go Back</button>
 
 <script>
+function recUsern(){
+  let element = document.getElementById('orgusernamee')
+  console.log(element.value);
+  alert('hi')
+}
 function goBack() {
   window.history.back();
 }
@@ -87,6 +92,6 @@ const urlParams = new URLSearchParams(window.location.search);
   const orgusername = urlParams.get('orgusername');
 
   // Set the username as the value of the disabled input field
-  document.getElementById('orgusername').value = orgusername;
+  document.getElementById('orgusernamee').value = orgusername;
 </script>
 </html>

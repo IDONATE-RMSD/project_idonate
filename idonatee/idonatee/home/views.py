@@ -1,7 +1,7 @@
 from email import message
 from django.shortcuts import render,redirect
 from django.contrib import messages
-from .models import Signupp,Detail,Rdetail,Odetail,Odetail2,Hdetail,Hdetail2,Detail2,Quick,Rdetail2,Edit,Recreq,Donreq,Orgreq,Hosreq,Rhosreq,Rdonreq,Rorgreq,Odonreq,Orecreq,Ohosreq,Hdonreq,Hrecreq,Horgreq
+from .models import Signupp,Detail,Rdetail,Odetail,Odetail2,Hdetail,Hdetail2,Detail2,Quick,Rdetail2,Edit,Recreq,Orgreq,Hosreq,Rhosreq,Rdonreq,Rorgreq,Odonreq,Orecreq,Ohosreq,Hdonreq,Hrecreq,Horgreq
 
 # Create your views here.
 #global val
@@ -873,12 +873,14 @@ def recreq(request):
 
     if request.method == "POST":
         scor = request.POST['scor']
+        recusername = request.POST['recusername']
 
-        for r in rd:
-            recusername = r.username  # Retrieve the username from each Rdetail object in the queryset
-            username = val()
-            recreq = Recreq(username=username, scor=scor, recusername=recusername)
-            recreq.save()
+        # for r in rd:
+        if rd == recusername:
+            recusername = rd.username  # Retrieve the username from each Rdetail object in the queryset
+        username = val()
+        recreq = Recreq(username=username, scor=scor, recusername=recusername)
+        recreq.save()
         
         return render(request, "dsearch.html")
     
@@ -890,8 +892,9 @@ def orecreq(request):
     ord = Rdetail.objects.all()
     if request.method == "POST":
         Org_req_to_rec = request.POST['Org_req_to_rec']
-        for rr in ord:
-            orecusername = rr.username 
+        orecusername = request.POST['orecusername']
+        if ord == orecusername:
+            orecusername = ord.username 
         username=val()
         orecreq = Orecreq(username=username, Org_req_to_rec=Org_req_to_rec,orecusername=orecusername)
         orecreq.save()
@@ -922,13 +925,15 @@ def orgreq(request):
     od = Odetail.objects.all()
 
     if request.method == "POST":
-        request = request.POST['request']
-        for o in od:
-            orgusername = o.username  # Retrieve the username from each Odetail object in the queryset
+        orequest = request.POST['orequest']
+        orgusername = request.POST['orgusername']
+
+        if od == orgusername:
+            orgusername = od.username # Retrieve the username from each Odetail object in the queryset
             
-            username=val()
-            orgreq = Orgreq(username=username, request=request, orgusername=orgusername)
-            orgreq.save()
+        username=val()
+        orgreq = Orgreq(username=username, orequest=orequest, orgusername=orgusername)
+        orgreq.save()
         # messages.success(request, "Details added successfully")
         return redirect('dsearch')
     return render(request, "orgreq.html",{'od': od})
@@ -950,44 +955,57 @@ def hosreq(request):
 
     if request.method == "POST":
         requesth = request.POST['requesth']
-        for h in hd:
-            hosusername = h.username 
-            username=val()
-            dhosreq = Hosreq(username=username, requesth=requesth,hosusername=hosusername)
-            dhosreq.save()
-        # messages.success(request, "Details added successfully")
-        return redirect('dsearch')
+        hosusername = request.POST['hosusername']
 
-    return render(request, "hosreq.html",{'hd': hd})
+        # for r in rd:
+        if hd == hosusername:
+            hosusername = hd.username  # Retrieve the username from each Rdetail object in the queryset
+        username = val()
+        recreq = Hosreq(username=username, requesth=requesth, hosusername=hosusername)
+        recreq.save()
+        
+        return render(request, "dsearch.html")
+    
+    return render(request, "hosreq.html", {'hd': hd})
 
 
 def rdonreq(request):
     global val
     rdd = Detail.objects.all()
+
     if request.method == "POST":
         rec_req_to_donar = request.POST['rec_req_to_donar']
-        for rd in rdd:
-            rdonusername = rd.username
-        username=val()
-        rdonreq = Rdonreq(username=username, rec_req_to_donar=rec_req_to_donar,rdonusername=rdonusername)
-        rdonreq.save()
-        # messages.success(request, "Details added successfully")
+        rdonusername = request.POST['rdonusername']
+
+        # for r in rd:
+        if rdd == rdonusername:
+            rdonusername = rdd.username  # Retrieve the username from each Rdetail object in the queryset
+        username = val()
+        recreq = Rdonreq(username=username, rec_req_to_donar=rec_req_to_donar, rdonusername=rdonusername)
+        recreq.save()
+        
         return render(request, "rsearch.html")
-    return render(request, "rdonreq.html",{'rdd': rdd})
+    
+    return render(request, "rdonreq.html", {'rdd': rdd})
 
 def odonreq(request):
     global val
     odd = Detail.objects.all()
+
     if request.method == "POST":
         org_req_to_donar = request.POST['org_req_to_donar']
-        for od in odd:
-            rdonusername = od.username
-        username=val()
-        odonreq = Odonreq(username=username, org_req_to_donar=org_req_to_donar,rdonusername=rdonusername)
-        odonreq.save()
-        # messages.success(request, "Details added successfully")
+        odonusername = request.POST['odonusername']
+
+        # for r in rd:
+        if odd == recusername:
+            recusername = odd.username  # Retrieve the username from each Rdetail object in the queryset
+        username = val()
+        recreq = Odonreq(username=username, org_req_to_donar=org_req_to_donar, odonusername=odonusername)
+        recreq.save()
+        
         return render(request, "osearch.html")
-    return render(request, "odonreq.html",{'odd': odd})
+    
+    return render(request, "odonreq.html", {'odd': odd})
 
 def hdonreq(request):
     global val
@@ -1006,17 +1024,22 @@ def hdonreq(request):
 
 def rorgreq(request):
     global val
-    rod = Odetail.objects.all()
+    od = Odetail.objects.all()
+
     if request.method == "POST":
         rec_req_to_organization = request.POST['rec_req_to_organization']
-        for ro in rod:
-            rorgusername = o.username 
-            username=val()
-            rorgreq = Rorgreq(username=username, rec_req_to_organization=rec_req_to_organization,rorgusername=rorgusername)
-            rorgreq.save()
-        # messages.success(request, "Details added successfully")
-        return render(request, "rsearch.html")
-    return render(request, "rorgreq.html",{'rod': rod})
+        rorgusername = request.POST['rorgusername']
+
+        # for r in rd:
+        if od == rorgusername:
+            rorgusername = od.username  # Retrieve the username from each Rdetail object in the queryset
+        username = val()
+        recreq = Rorgreq(username=username, rec_req_to_organization=rec_req_to_organization, rorgusername=rorgusername)
+        recreq.save()
+        
+        return render(request, "dsearch.html")
+    
+    return render(request, "rorgreq.html", {'od': od})
 
 def horgreq(request):
     global val
@@ -1039,14 +1062,18 @@ def rhosreq(request):
 
     if request.method == "POST":
         hosuserreq = request.POST['hosuserreq']
-        for rh in rhd:
-            rhosusername = rh.username
-            username=val()
-            rhosreq = Rhosreq(username=username, hosuserreq=hosuserreq,rhosusername=rhosusername)
-            rhosreq.save()
-        # messages.success(request, "Details added successfully")
+        rhosusername = request.POST['rhosusername']
+
+        # for r in rd:
+        if rhd == rhosusername:
+            rhosusername = rhd.username  # Retrieve the username from each Rdetail object in the queryset
+        username = val()
+        recreq = Rhosreq(username=username, hosuserreq=hosuserreq, rhosusername=rhosusername)
+        recreq.save()
+        
         return render(request, "rsearch.html")
-    return render(request, "rhosreq.html",{'rhd': rhd})
+    
+    return render(request, "rhosreq.html", {'rhd': rhd})
 
 def ohosreq(request):
     global val
@@ -1061,18 +1088,6 @@ def ohosreq(request):
         # messages.success(request, "Details added successfully")
         return render(request, "osearch.html")
     return render(request, "ohosreq.html",{'ohd': ohd})
-
-
-def donreq(request):
-    if request.method == "POST":
-        scod = request.POST['scod']
-        username=val()
-        donreq = Donreq(username=username, scod=scod)
-        donreq.save()
-        # messages.success(request, "Details added successfully")
-        return render(request, "dsearch.html")
-    
-    return render(request, "donreq.html")
 
 
 def admorgreq(request):

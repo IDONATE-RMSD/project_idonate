@@ -121,14 +121,10 @@ class Recreq(models.Model):
     recusername=models.CharField(max_length=20)
     scor=models.CharField(max_length=20)
 
-class Donreq(models.Model):
-    username=models.CharField(max_length=20)
-    scod=models.CharField(max_length=20)
-
 class Orgreq(models.Model):
     username=models.CharField(max_length=20)
     orgusername=models.CharField(max_length=20)
-    request=models.CharField(max_length=20)
+    orequest=models.CharField(max_length=20)
 
 class Hosreq(models.Model):
     username=models.CharField(max_length=20)

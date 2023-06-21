@@ -37,11 +37,11 @@
                 
 
                     <div class="fields">
+                  
                         <div class="user-box">
                             <label>Hospital name</label>
-                            <input type="text" name="rhosusername" id="rhosusername" disabled>
+                            <input type="text" name="rhosusername" id="rhosusernamee">
                           </div>
-
 
                         <div class="input-field">
                             <label>Select_category</label>
@@ -58,7 +58,7 @@
                         </div>
 
                     
-                        <button class="sumbit">
+                        <button class="submit">
                             <span class="btnText">REQUEST</span>
                             <i class="uil uil-navigator"></i>
                         </button>
@@ -71,6 +71,12 @@
 <button onclick="goBack()">Go Back</button>
 
 <script>
+function recUsern(){
+  let element = document.getElementById('rhosusernamee')
+  console.log(element.value);
+  alert('hi')
+}
+
 function goBack() {
   window.history.back();
 }
@@ -84,7 +90,7 @@ function goBack() {
   const rhosusername = urlParams.get('rhosusername');
 
   // Set the username as the value of the disabled input field
-  document.getElementById('rhosusername').value = rhosusername;
+  document.getElementById('rhosusernamee').value = rhosusername;
 </script>
 </html>
 </div>

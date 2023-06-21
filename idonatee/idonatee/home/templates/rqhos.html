@@ -1186,14 +1186,11 @@
                 <td>{{user.hmobno}}</td>
                 
                 <td><a href="/hossearch/{{user.username}}">View profile</a></td>
-                {% comment %} <td><a href="/orgidentity/{{user.username}}">View Identity</a></td>
-                {% comment %} <td><span class="label label-danger">{{user.status}}</span></td> {% endcomment %}
                 <td>
                   <a href="/rhosreq?rhosusername={{ user.username }}">
                     <button type="submit" class="btn btn-danger">Request</button>
                   </a>
                 </td>
-               </tr>
           {% endfor %}
 
           

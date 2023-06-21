@@ -40,7 +40,7 @@
                   
                         <div class="user-box">
                             <label>Hospital name</label>
-                            <input type="text" name="hosusername" id="hosusername" disabled>
+                            <input type="text" name="hosusername" id="hosusernamee">
                           </div>
 
                         <div class="input-field">
@@ -58,7 +58,7 @@
                         </div>
 
                     
-                        <button class="sumbit" onclick="setHospitalName(event)">
+                        <button class="submit">
                             <span class="btnText">REQUEST</span>
                             <i class="uil uil-navigator"></i>
                         </button>
@@ -84,7 +84,7 @@ function goBack() {
   const hosusername = urlParams.get('hosusername');
 
   // Set the username as the value of the disabled input field
-  document.getElementById('hosusername').value = hosusername;
+  document.getElementById('hosusernamee').value = hosusername;
 </script>
 </html>
 </div>

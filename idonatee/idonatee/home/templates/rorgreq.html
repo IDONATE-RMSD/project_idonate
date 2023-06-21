@@ -40,7 +40,7 @@
                   
                         <div class="user-box">
                             <label>Organization name</label>
-                            <input type="text" name="rorgusername" id="rorgusername" disabled>
+                            <input type="text" name="rorgusername" id="rorgusernamee">
                           </div>
 
                         <div class="input-field">
@@ -58,7 +58,7 @@
                         </div>
 
                     
-                        <button class="sumbit" onclick="setRorganizationName(event)">
+                        <button class="sumbit">
                             <span class="btnText">REQUEST</span>
                             <i class="uil uil-navigator"></i>
                         </button>
@@ -83,6 +83,6 @@ const urlParams = new URLSearchParams(window.location.search);
   const rorgusername = urlParams.get('rorgusername');
 
   // Set the username as the value of the disabled input field
-  document.getElementById('rorgusername').value = rorgusername;
+  document.getElementById('rorgusernamee').value = rorgusername;
 </script>
 </html>

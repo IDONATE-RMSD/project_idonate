@@ -12,7 +12,6 @@ from .models import Hdetail2
 from .models import Quick
 from .models import Edit
 from .models import Recreq
-from .models import Donreq
 from .models import Orgreq
 from .models import Hosreq
 from .models import Rhosreq
@@ -39,7 +38,6 @@ admin.site.register(Hdetail2)
 admin.site.register(Quick)
 admin.site.register(Edit)
 admin.site.register(Recreq)
-admin.site.register(Donreq)
 admin.site.register(Orgreq)
 admin.site.register(Hosreq)
 admin.site.register(Rhosreq)

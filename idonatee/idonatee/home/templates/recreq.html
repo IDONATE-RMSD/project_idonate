@@ -37,7 +37,7 @@
       <div class="fields">
          <div class="user-box">
           <label>Receiver name</label>
-          <input type="text" name="recusername" id="recusername" disabled>
+          <input type="text" name="recusername" id="recusernamee">
         </div>
         <div class="input-field">
           <label>Select category of receiving</label>
@@ -50,7 +50,7 @@
             <option>Eye</option>
           </select>
         </div>
-        <button class="submit" onclick="setReceiverName(event)">
+        <button class="submit">
           <span class="btnText">REQUEST</span>
           <i class="uil uil-navigator"></i>
         </button>
@@ -62,6 +62,11 @@
 <button onclick="goBack()">Go Back</button>
 
 <script>
+function recUsern(){
+  let element = document.getElementById('recusernamee')
+  console.log(element.value);
+  alert('hi')
+}
 function goBack() {
   window.history.back();
 }
@@ -75,6 +80,6 @@ function goBack() {
   const recusername = urlParams.get('recusername');
 
   // Set the username as the value of the disabled input field
-  document.getElementById('recusername').value = recusername;
+  document.getElementById('recusernamee').value = recusername;
 </script>
 </html>
